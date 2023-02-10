@@ -8,7 +8,12 @@ import Rails from "@rails/ujs";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "@hotwired/turbo-rails";
+import { Popover } from "bootstrap";
 
 Rails.start();
 // Turbolinks.start()
 ActiveStorage.start();
+
+document.addEventListener("turbo:load", () => {
+  log.info("turbo:load");
+});
