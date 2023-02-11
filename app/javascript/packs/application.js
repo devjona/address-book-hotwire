@@ -15,5 +15,5 @@ Rails.start();
 ActiveStorage.start();
 
 document.addEventListener("turbo:load", () => {
-  log.info("turbo:load");
+  console.info("turbo:load");
 });

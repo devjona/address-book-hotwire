@@ -1,0 +1,64 @@
+<%= form_with(model: person) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.label :salutation, class: "form-label" %>
+  </p>
+  <p>
+    <select name="person[salutation]" id="person_salutation">
+      <% Person.salutations.map do |k, v| %>
+        <option value="<%= k %>"><%= v %></option>
+      <% end %>
+    </select>
+  </p>
+  <p>
+    <%= form.label :firstname, class: "form-label" %>
+  </p>
+  <p>
+    <%= form.text_field :firstname, class: "form-control", :required => true %>
+  </p>
+  <p>
+    <%= form.label :middlename, class: "form-label" %>
+  </p>
+  <p>
+    <%= form.text_field :middlename, class: "form-control" %>
+  </p>
+  <p>
+    <%= form.label :lastname, class: "form-label" %>
+  </p>
+  <p>
+    <%= form.text_field :lastname, class: "form-control", :required => true %>
+  </p>
+  <p>
+    <%= form.label :birthdate %>
+  </p>
+  <p>
+    <%= form.date_field :birthdate, class: "form-control" %>
+  </p>
+  <p>
+    <%= form.label :ssn, class: "form-label" %>
+  </p>
+  <p>
+    <%= form.text_field :ssn, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*' %>
+  </p>
+  <p>
+    <%= form.label :comment, class: "form-label" %>
+  </p>
+  <p>
+    <%= form.text_field :comment, class: "form-control" %>
+  </p>
+  <div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
