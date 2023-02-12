@@ -2,25 +2,10 @@
 
 <h1>People</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="d-flex flex-column justify-content-around">
+  <div class="col col-md-9 col-lg-6 col-xl-5">
+    <%= render @people %>
+  </div>
+</div>
 
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.firstname %> <%= person.lastname %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Person', new_person_path %>
+<%= link_to 'Add a Person', new_person_path, class: 'btn btn-primary' %>
