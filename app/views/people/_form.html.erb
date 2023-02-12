@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  <%# Salutation %>
   <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1">
     <div class="mb-2">
       <%= form.label :salutation, class: "form-label" %>
@@ -20,6 +21,7 @@
       </select>
     </div>
   </div>
+  <%# Name Inputs %>
   <div class="d-flex flex-wrap flex-lg-nowrap gap-3">
     <div class="mb-2 flex-grow-1">
       <%= form.label :firstname, "Firstname (required)", class: "form-label" %>
@@ -34,6 +36,7 @@
       <%= form.text_field :lastname, class: "form-control", :required => true %>
     </div>
   </div>
+  <%# Birthdate and SSN %>
   <div class="d-flex flex-wrap gap-3">
     <div class="mb-2 flex-grow-1">
       <%= form.label :birthdate, class: "form-label" %>
@@ -41,13 +44,21 @@
     </div>
     <div class="mb-2 flex-grow-1">
       <%= form.label :ssn, class: "form-label" %>
-      <%= form.text_field :ssn, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*' %>
+      <%= form.text_field :ssn, class: "form-control", :minlength => 9, :maxlength => 9, :inputmode => 'numeric', :pattern => '\d*' %>
     </div>
   </div>
+  <%# Email Inputs (soon) %>
+  <%# Phone Inputs %>
+  <div class="d-flex flex-wrap gap-3">
+    <%= render partial: 'phones/phone', locals: { form: form }%>
+  </div>
+  <%# Address Inputs (soon)%>
+  <%# Comments %>
   <div class="mb-2">
     <%= form.label :comment, class: "form-label" %>
     <%= form.text_area :comment, class: "form-control" %>
   </div>
+  <%# SUBMIT %>
   <div class="my-4">
     <%= button_tag "Submit", type: 'submit', class: 'btn btn-primary' %>
   </div>
