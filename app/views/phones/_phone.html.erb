@@ -2,7 +2,7 @@
   <div class="mb-2 flex-grow-1 d-flex gap-3 align-items-end">
     <div class="flex-grow-1">
       <%= phones_form.label :number, "Phone number", class: "form-label" %>
-      <%= phones_form.text_field :number, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*', :required => true %>
+      <%= phones_form.text_field :number, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*' %>
     </div>
     <div class="form-check pb-1">
       <%= phones_form.check_box :_destroy, class: "form-check-input" %>
