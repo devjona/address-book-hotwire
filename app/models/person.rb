@@ -1,6 +1,10 @@
 class Person < ApplicationRecord
-  enum salutation: { mr: 'Mr.', ms: 'Ms.', mrs: 'Mrs.' }
-  validates :firstname, :lastname, presence: true
+  has_many :phones
+  accepts_nested_attributes_for :phones, allow_destroy: true, reject_if: lambda { |attributes|
+                                                                           attributes['number'].blank?
+                                                                         }
 
-  # has_many... will be added later
+  enum salutation: { mr: 'Mr.', ms: 'Ms.', mrs: 'Mrs.' }
+
+  validates :firstname, :lastname, presence: true
 end
