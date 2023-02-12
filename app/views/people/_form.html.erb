@@ -10,55 +10,39 @@
       </ul>
     </div>
   <% end %>
-  <p>
+  <div class="mb-2">
     <%= form.label :salutation, class: "form-label" %>
-  </p>
-  <p>
-    <select name="person[salutation]" id="person_salutation">
+    <select name="person[salutation]" id="person_salutation" class="form-select">
       <% Person.salutations.map do |k, v| %>
         <option value="<%= k %>"><%= v %></option>
       <% end %>
     </select>
-  </p>
-  <p>
-    <%= form.label :firstname, class: "form-label" %>
-  </p>
-  <p>
+  </div>
+  <div class="mb-2">
+    <%= form.label :firstname, "Firstname (required)", class: "form-label" %>
     <%= form.text_field :firstname, class: "form-control", :required => true %>
-  </p>
-  <p>
+  </div>
+  <div class="mb-2">
     <%= form.label :middlename, class: "form-label" %>
-  </p>
-  <p>
     <%= form.text_field :middlename, class: "form-control" %>
-  </p>
-  <p>
-    <%= form.label :lastname, class: "form-label" %>
-  </p>
-  <p>
+  </div>
+  <div class="mb-2">
+    <%= form.label :lastname, "Lastname (required)", class: "form-label" %>
     <%= form.text_field :lastname, class: "form-control", :required => true %>
-  </p>
-  <p>
+  </div>
+  <div class="mb-2">
     <%= form.label :birthdate %>
-  </p>
-  <p>
     <%= form.date_field :birthdate, class: "form-control" %>
-  </p>
-  <p>
+  </div>
+  <div class="mb-2">
     <%= form.label :ssn, class: "form-label" %>
-  </p>
-  <p>
     <%= form.text_field :ssn, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*' %>
-  </p>
-  <p>
+  </div>
+  <div class="mb-2">
     <%= form.label :comment, class: "form-label" %>
-  </p>
-  <p>
     <%= form.text_field :comment, class: "form-control" %>
-  </p>
-  <div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+  </div>
+  <div class="my-4">
+    <%= button_tag "Submit", type: 'submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>
