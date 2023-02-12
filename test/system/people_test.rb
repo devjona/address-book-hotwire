@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class PeopleTest < ApplicationSystemTestCase
   setup do
-    @person = people(:one)
+    @person = people(:person_one)
   end
 
   test 'visiting the index' do
@@ -11,18 +11,19 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test 'creating a Person' do
+    # byebug
     visit people_url
-    click_on 'New Person'
+    click_on 'Add a Person'
 
     fill_in 'Firstname', with: @person.firstname
     fill_in 'Middlename', with: @person.middlename
     fill_in 'Lastname', with: @person.lastname
     fill_in 'Birthdate', with: Time.new(1990, 4, 1)
-    fill_in 'Comment', with: @person.comment
+    fill_in 'Comment', match: :first, with: @person.comment
     fill_in 'Ssn', with: @person.ssn
     select 'Mrs.', from: 'Salutation'
 
-    click_on 'Create Person'
+    click_on 'Submit'
 
     assert_text 'Person was successfully created'
     click_on 'Back'
@@ -32,7 +33,7 @@ class PeopleTest < ApplicationSystemTestCase
     visit people_url
     click_on 'Edit', match: :first
 
-    click_on 'Update Person'
+    click_on 'Submit'
 
     # Actually change the person, like last name
 
@@ -41,10 +42,10 @@ class PeopleTest < ApplicationSystemTestCase
     # Assert their name is changed
   end
 
-  test 'destroying a Person' do
+  test 'deleting a Person' do
     visit people_url
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on 'Delete', match: :first
     end
 
     assert_text 'Person was successfully destroyed'

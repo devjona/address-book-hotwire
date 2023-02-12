@@ -1,12 +1,18 @@
-<%= form.fields_for :phones do |phones_form| %>
-  <div class="mb-2 flex-grow-1 d-flex gap-3 align-items-end">
-    <div class="flex-grow-1">
-      <%= phones_form.label :number, "Phone number", class: "form-label" %>
-      <%= phones_form.text_field :number, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*' %>
+<div class="d-flex flex-wrap gap-3 border rounded-3 p-3 mb-3 shadow">
+  <%= form.fields_for :phones do |phones_form| %>
+    <div class="mb-2 flex-wrap flex-grow-1 d-flex gap-3 align-items-start border border-light bg-light rounded-3 p-3">
+      <div class="flex-grow-1">
+        <%= phones_form.label :number, "Phone number", class: "form-label" %>
+        <%= phones_form.phone_field :number, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*' %>
+      </div>
+      <div class="form-check pb-1">
+        <%= phones_form.check_box :_destroy, class: "form-check-input" %>
+        <%= phones_form.label :_destroy, "Remove", class: "form-check-label text-danger" %>
+      </div>
+      <div class="">
+        <%= phones_form.label :comment, "Comment", class: "form-label" %>
+        <%= phones_form.text_area :comment, class: "form-control" %>
+      </div>
     </div>
-    <div class="form-check pb-1">
-      <%= phones_form.check_box :_destroy, class: "form-check-input" %>
-      <%= phones_form.label :_destroy, "Remove", class: "form-check-label text-danger" %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

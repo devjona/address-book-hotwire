@@ -1,0 +1,6 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# email_one: !!omap
+#   - address: some@email.com
+#   - comment: MyString
+#   - person: person_one

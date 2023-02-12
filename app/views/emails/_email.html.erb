@@ -1,0 +1,18 @@
+<div class="gap-3 border rounded-3 p-3 mb-3 shadow">
+  <%= form.fields_for :emails do |emails_form| %>
+    <div class="mb-2 flex-wrap flex-grow-1 d-flex gap-3 align-items-start border border-light bg-light rounded-3 p-3">
+      <div class="flex-grow-1">
+        <%= emails_form.label :address, "Email address", class: "form-label" %>
+        <%= emails_form.email_field :address, class: "form-control" %>
+      </div>
+      <div class="form-check pb-1">
+        <%= emails_form.check_box :_destroy, class: "form-check-input" %>
+        <%= emails_form.label :_destroy, "Remove", class: "form-check-label text-danger" %>
+      </div>
+      <div class="">
+        <%= emails_form.label :comment, "Comment", class: "form-label" %>
+        <%= emails_form.text_area :comment, class: "form-control" %>
+      </div>
+    </div>
+  <% end %>
+</div>

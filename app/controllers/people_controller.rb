@@ -15,11 +15,13 @@ class PeopleController < ApplicationController
   def new
     @person = Person.new
     @person.phones.build
+    @person.emails.build
   end
 
   # GET /people/1/edit
   def edit
     @person.phones.build
+    @person.emails.build
   end
 
   # POST /people or /people.json
@@ -69,7 +71,16 @@ class PeopleController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def person_params
-    params.require(:person).permit(:firstname, :middlename, :lastname, :ssn, :birthdate, :comment, :salutation,
-                                   phones_attributes: %i[id number comment _destroy])
+    params.require(:person).permit(
+      :firstname,
+      :middlename,
+      :lastname,
+      :ssn,
+      :birthdate,
+      :comment,
+      :salutation,
+      phones_attributes: %i[id number comment _destroy],
+      emails_attributes: %i[id address comment _destroy]
+    )
   end
 end
