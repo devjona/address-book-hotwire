@@ -17,6 +17,22 @@ seed_people = [
     comment: 'This is a comment', salutation: Person.salutations[:mrs] }
 ]
 
-seed_people.each do |person|
+phone_numbers = [
+  { number: '123-456-7890', comment: 'This is a comment' },
+  { number: '123-456-7891', comment: 'This is a comment' },
+  { number: '123-456-7892', comment: 'This is a comment' },
+  { number: '123-456-7893', comment: 'This is a comment' }
+]
+
+emails = [
+  { address: 'some@email.com', comment: 'This is a comment' },
+  { address: 'another@email.com', comment: 'This is a comment' },
+  { address: 'hey@dude.com', comment: 'This is a comment' },
+  { address: 'yo@squid.co', comment: 'This is a comment' }
+]
+
+seed_people.each_with_index do |person, index|
   Person.create(person)
+  Email.create(emails[index].merge(person_id: Person.last.id))
+  Phone.create(phone_numbers[index].merge(person_id: Person.last.id))
 end
