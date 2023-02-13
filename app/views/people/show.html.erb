@@ -36,6 +36,15 @@
       <p><%= email.comment %></p>
     <% end %>
   </div>
+  <div class="mb-4 w-100 border border-light bg-light rounded-3 p-3">
+    <h3 class="text-secondary">Addresses:</h3>
+    <% @person.addresses.each do |address| %>
+      <p><%= address.street %></p>
+      <p><%= address.town %></p>
+      <p><%= address.zip %></p>
+      <p><%= address.state %></p>
+    <% end %>
+  </div>
   <div class="mb-4 100 border border-light bg-light rounded-3 p-3">
     <h3 class="text-secondary">Comments:</h3>
     <p><%= @person.comment %></p>

@@ -53,8 +53,8 @@
   <%= render partial: 'emails/email', locals: { form: form }%>
   <%# Phone Inputs %>
   <%= render partial: 'phones/phone', locals: { form: form }%>
-  <%# Address Inputs (soon)%>
-  <%# add partial here %>
+  <%# Address Inputs %>
+  <%= render partial: 'addresses/address', locals: { form: form } %>
   <%# Comments %>
   <div class="mb-2">
     <%= form.label :comment, class: "form-label" %>

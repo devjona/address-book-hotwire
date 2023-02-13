@@ -1,0 +1,27 @@
+<div class="gap-3 border rounded-3 p-3 mb-3 shadow">
+  <%= form.fields_for :addresses do |addresses_form| %>
+    <div class="mb-2 flex-wrap flex-grow-1 d-flex gap-3 align-items-start border border-light bg-light rounded-3 p-3">
+      <div class="flex-grow-1">
+        <%= addresses_form.label :street, "Street", class: "form-label" %>
+        <%= addresses_form.text_field :street, class: "form-control", :required => true %>
+      </div>
+      <div class="flex-grow-1">
+        <%= addresses_form.label :town, "Town", class: "form-label" %>
+        <%= addresses_form.text_field :town, class: "form-control", :required => true %>
+      </div>
+      <div class="flex-grow-1">
+        <%= addresses_form.label :zip, "Zip", class: "form-label" %>
+        <%= addresses_form.text_field :zip, class: "form-control", :required => true %>
+      </div>
+      <div class="flex-grow-1">
+        <%= addresses_form.label :state, "State", class: "form-label" %>
+        <%= addresses_form.text_field :state, class: "form-control" %>
+      </div>
+
+      <div class="form-check pb-1">
+        <%= addresses_form.check_box :_destroy, class: "form-check-input" %>
+        <%= addresses_form.label :_destroy, "Remove", class: "form-check-label text-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>

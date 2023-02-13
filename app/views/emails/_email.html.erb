@@ -3,7 +3,7 @@
     <div class="mb-2 flex-wrap flex-grow-1 d-flex gap-3 align-items-start border border-light bg-light rounded-3 p-3">
       <div class="flex-grow-1">
         <%= emails_form.label :address, "Email address", class: "form-label" %>
-        <%= emails_form.email_field :address, class: "form-control" %>
+        <%= emails_form.email_field :address, class: "form-control", :required => true %>
       </div>
       <div class="form-check pb-1">
         <%= emails_form.check_box :_destroy, class: "form-check-input" %>

@@ -8,16 +8,6 @@
 # I can't generate Time objects for Ruby from YML
 # Create them in the .rb file when needed.
 
-# person_one:
-#   id: 1
-#   firstname: Pablo
-#   middlename: Enrique
-#   lastname: Arenas
-#   ssn: 1112223333
-#   birthdate: 
-#   comment: Nice guy
-#   salutation: Person.salutations[:mr]
-
 person_one: !!omap
   - id: 1
   - firstname: Pablo

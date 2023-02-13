@@ -3,4 +3,4 @@
 email_one: !!omap
   - address: some@email.com
   - comment: MyString
-  - person: person_one
+  - person_id: 1

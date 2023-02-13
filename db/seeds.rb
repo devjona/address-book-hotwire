@@ -31,8 +31,16 @@ emails = [
   { address: 'yo@squid.co', comment: 'This is a comment' }
 ]
 
+addresses = [
+  { street: '123 Main St', town: 'Townsville', zip: '12345', state: 'CA', country: 'USA' },
+  { street: '456 Main St', town: 'Townsville', zip: '12345', state: 'CA', country: 'USA' },
+  { street: '789 Main St', town: 'Townsville', zip: '12345', state: 'CA', country: 'USA' },
+  { street: '101 Main St', town: 'Townsville', zip: '12345', state: 'CA', country: 'USA' }
+]
+
 seed_people.each_with_index do |person, index|
   Person.create(person)
   Email.create(emails[index].merge(person_id: Person.last.id))
   Phone.create(phone_numbers[index].merge(person_id: Person.last.id))
+  Address.create(addresses[index].merge(person_id: Person.last.id))
 end
