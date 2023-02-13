@@ -17,7 +17,10 @@
         <%= addresses_form.label :state, "State", class: "form-label" %>
         <%= addresses_form.text_field :state, class: "form-control" %>
       </div>
-
+      <div class="flex-grow-1">
+        <%= addresses_form.label :country, class: "form-label" %>
+        <%= addresses_form.collection_select :country, Address.countries, :first, :last, { include_blank: true }, class: "form-select" %>
+      </div>
       <div class="form-check pb-1">
         <%= addresses_form.check_box :_destroy, class: "form-check-input" %>
         <%= addresses_form.label :_destroy, "Remove", class: "form-check-label text-danger" %>

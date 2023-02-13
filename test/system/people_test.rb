@@ -30,6 +30,7 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in 'Town', with: @address.town
     fill_in 'Zip', with: @address.zip
     fill_in 'State', with: @address.state
+    select 'USA', from: 'Country'
 
     click_on 'Submit'
 
@@ -48,12 +49,14 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in 'Firstname', with: new_name
     fill_in 'Email address', with: new_email
     fill_in 'Zip', with: new_zip
+    select 'Canada', from: 'Country'
     click_on 'Submit'
 
     assert_text 'Person was successfully updated'
     assert_text new_name
     assert_text new_email
     assert_text new_zip
+    assert_text 'Canada'
     click_on 'Back'
   end
 
