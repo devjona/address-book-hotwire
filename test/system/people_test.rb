@@ -3,6 +3,9 @@ require 'application_system_test_case'
 class PeopleTest < ApplicationSystemTestCase
   setup do
     @person = people(:person_one)
+    @phone = phones(:phone_one)
+    @email = emails(:email_one)
+    @address = addresses(:address_one)
   end
 
   test 'visiting the index' do
@@ -11,7 +14,6 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test 'creating a Person' do
-    # byebug
     visit people_url
     click_on 'Add a Person'
 
@@ -22,6 +24,13 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in 'Comment', match: :first, with: @person.comment
     fill_in 'Ssn', with: @person.ssn
     select 'Mrs.', from: 'Salutation'
+    fill_in 'Email address', with: @email.address
+    fill_in 'Phone number', with: @phone.number
+    fill_in 'Street', with: @address.street
+    fill_in 'Town', with: @address.town
+    fill_in 'Zip', with: @address.zip
+    fill_in 'State', with: @address.state
+    select 'USA', from: 'Country'
 
     click_on 'Submit'
 
@@ -30,16 +39,25 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test 'updating a Person' do
+    new_name = 'Sigroy'
+    new_email = 'sig@roy.com'
+    new_zip = '98765'
     visit people_url
-    click_on 'Edit', match: :first
+    assert_text @person.firstname
 
+    click_on 'Edit', match: :first
+    fill_in 'Firstname', with: new_name
+    fill_in 'Email address', with: new_email
+    fill_in 'Zip', with: new_zip
+    select 'Canada', from: 'Country'
     click_on 'Submit'
 
-    # Actually change the person, like last name
-
     assert_text 'Person was successfully updated'
+    assert_text new_name
+    assert_text new_email
+    assert_text new_zip
+    assert_text 'Canada'
     click_on 'Back'
-    # Assert their name is changed
   end
 
   test 'deleting a Person' do
@@ -49,6 +67,6 @@ class PeopleTest < ApplicationSystemTestCase
     end
 
     assert_text 'Person was successfully destroyed'
-    # Back on the index page, assert the person is not there
+    assert_no_text @person.firstname
   end
 end

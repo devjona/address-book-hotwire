@@ -1,6 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-email_one: !!omap
-  - address: some@email.com
-  - comment: MyString
+address_one: !!omap
+  - street: MyString
+  - town: MyString
+  - zip: 78787
+  - state: TX
+  - country: US
   - person_id: 1
+

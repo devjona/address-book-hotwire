@@ -15,11 +15,7 @@
     <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1">
       <div class="mb-2">
         <%= form.label :salutation, class: "form-label" %>
-        <select name="person[salutation]" id="person_salutation" class="form-select">
-          <% Person.salutations.map do |k, v| %>
-            <option value="<%= k %>"><%= v %></option>
-          <% end %>
-        </select>
+        <%= form.collection_select :salutation, Person.salutations, :first, :last, { include_blank: true }, class: "form-select" %>
       </div>
     </div>
     <%# Name Inputs %>
@@ -53,8 +49,8 @@
   <%= render partial: 'emails/email', locals: { form: form }%>
   <%# Phone Inputs %>
   <%= render partial: 'phones/phone', locals: { form: form }%>
-  <%# Address Inputs (soon)%>
-  <%# add partial here %>
+  <%# Address Inputs %>
+  <%= render partial: 'addresses/address', locals: { form: form } %>
   <%# Comments %>
   <div class="mb-2">
     <%= form.label :comment, class: "form-label" %>

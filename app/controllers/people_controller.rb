@@ -16,13 +16,11 @@ class PeopleController < ApplicationController
     @person = Person.new
     @person.phones.build
     @person.emails.build
+    @person.addresses.build
   end
 
   # GET /people/1/edit
-  def edit
-    @person.phones.build
-    @person.emails.build
-  end
+  def edit; end
 
   # POST /people or /people.json
   def create
@@ -80,7 +78,8 @@ class PeopleController < ApplicationController
       :comment,
       :salutation,
       phones_attributes: %i[id number comment _destroy],
-      emails_attributes: %i[id address comment _destroy]
+      emails_attributes: %i[id address comment _destroy],
+      addresses_attributes: %i[id street town zip state country _destroy]
     )
   end
 end
