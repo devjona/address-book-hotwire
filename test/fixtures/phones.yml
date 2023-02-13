@@ -2,4 +2,4 @@
 phone_one: !!omap
   - number: 2102223333
   - comment: MyText
-  - person_id: 1
+  - person: person_one
