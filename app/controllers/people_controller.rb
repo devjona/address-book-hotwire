@@ -59,7 +59,7 @@ class PeopleController < ApplicationController
       format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
       format.json { head :no_content }
       # THe page doesn't update automatically... maybe this is where those destroy.turbo_stream.erb files come in?
-      # format.turbo_stream
+      format.turbo_stream
     end
   end
 
