@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Persona Uno
+  email: persona@uno.com
+  # password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+  password_digest: <%= default_password_digest %>
+
+
+# two:
+#   name: MyString
+#   email: MyString
+#   password_digest: MyString

@@ -1,14 +1,26 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid p-0">
-    <a class="navbar-brand" href="#">PeopleApp</a>
+    <a class="navbar-brand" href="/">PeopleApp</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <% if current_user %>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+        </ul>
+      <% end %>
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <% if current_user %>
+            <a class="nav-link" href="/logout">Log out</a>
+          <% else %>
+            <a class="nav-link" href="/login">Log in</a>
+          <% end %>
         </li>
+
       </ul>
     </div>
   </div>

@@ -6,14 +6,16 @@ class PeopleTest < ApplicationSystemTestCase
     @phone = phones(:phone_one)
     @email = emails(:email_one)
     @address = addresses(:address_one)
+    @user = users(:one)
   end
 
-  test 'visiting the index' do
+  test 'visiting the people index, redirected to login' do
     visit people_url
-    assert_selector 'h1', text: 'People'
+    assert_selector 'h1', text: 'Login'
   end
 
   test 'creating a Person' do
+    sign_in_as(@user)
     visit people_url
     click_on 'Add a Person'
     fill_in_second_person
@@ -23,6 +25,7 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test 'updating a Person' do
+    sign_in_as(@user)
     new_name = 'Sigroy'
     new_email = 'sig@roy.com'
     new_zip = '98765'
@@ -44,6 +47,7 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test 'deleting a Person' do
+    sign_in_as(@user)
     visit people_url
     page.accept_confirm do
       click_on 'Delete', match: :first
