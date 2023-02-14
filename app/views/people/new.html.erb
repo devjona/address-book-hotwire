@@ -4,5 +4,8 @@
 </div>
 
 <%= turbo_frame_tag @person do %>
-  <%= render 'form', person: @person %>
+  <div class="border rounded-3 p-3 mb-3 shadow">
+    <%= link_to 'Back', people_path, class: 'btn btn-outline-primary' %>
+    <%= render 'form', person: @person %>
+  </div>
 <% end %>
