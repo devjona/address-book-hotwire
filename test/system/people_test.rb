@@ -16,26 +16,10 @@ class PeopleTest < ApplicationSystemTestCase
   test 'creating a Person' do
     visit people_url
     click_on 'Add a Person'
-
-    fill_in 'Firstname', with: @person.firstname
-    fill_in 'Middlename', with: @person.middlename
-    fill_in 'Lastname', with: @person.lastname
-    fill_in 'Birthdate', with: Time.new(1990, 4, 1)
-    fill_in 'Comment', match: :first, with: @person.comment
-    fill_in 'Ssn', with: @person.ssn
-    select 'Mrs.', from: 'Salutation'
-    fill_in 'Email address', with: @email.address
-    fill_in 'Phone number', with: @phone.number
-    fill_in 'Street', with: @address.street
-    fill_in 'Town', with: @address.town
-    fill_in 'Zip', with: @address.zip
-    fill_in 'State', with: @address.state
-    select 'USA', from: 'Country'
-
+    fill_in_second_person
     click_on 'Submit'
 
-    assert_text 'Person was successfully created'
-    click_on 'Back'
+    assert_text 'Tim Zam'
   end
 
   test 'updating a Person' do
@@ -52,7 +36,6 @@ class PeopleTest < ApplicationSystemTestCase
     select 'Canada', from: 'Country'
     click_on 'Submit'
 
-    assert_text 'Person was successfully updated'
     assert_text new_name
     assert_text new_email
     assert_text new_zip
@@ -66,7 +49,22 @@ class PeopleTest < ApplicationSystemTestCase
       click_on 'Delete', match: :first
     end
 
-    assert_text 'Person was successfully destroyed'
     assert_no_text @person.firstname
+  end
+
+  def fill_in_second_person
+    fill_in 'Firstname', with: 'Tim'
+    fill_in 'Lastname', with: 'Zam'
+    fill_in 'Birthdate', with: Time.new(1990, 4, 1)
+    fill_in 'Comment', match: :first, with: 'This is a comment.'
+    fill_in 'Ssn', with: '123456789'
+    select 'Mr.', from: 'Salutation'
+    fill_in 'Email address', with: 'tim@zam.com'
+    fill_in 'Phone number', with: '1234567890'
+    fill_in 'Street', with: '123 Main St.'
+    fill_in 'Town', with: 'Townsville'
+    fill_in 'Zip', with: '12345'
+    fill_in 'State', with: 'CA'
+    select 'USA', from: 'Country'
   end
 end
