@@ -7,21 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 seed_people = [
-  { firstname: 'Sam', middlename: 'A', lastname: 'Smith', ssn: '123-45-6789', birthdate: '1980-01-01',
+  { firstname: 'Sam', middlename: 'A', lastname: 'Smith', ssn: '123456789', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:mr] },
-  { firstname: 'John', middlename: 'B', lastname: 'Doe', ssn: '987-65-4321', birthdate: '1980-01-01',
+  { firstname: 'John', middlename: 'B', lastname: 'Doe', ssn: '987654321', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:mr] },
-  { firstname: 'Jane', middlename: 'C', lastname: 'Doe', ssn: '111-11-1111', birthdate: '1980-01-01',
+  { firstname: 'Jane', middlename: 'C', lastname: 'Doe', ssn: '111111111', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:ms] },
-  { firstname: 'Sally', middlename: 'D', lastname: 'Smith', ssn: '222-22-2222', birthdate: '1980-01-01',
+  { firstname: 'Sally', middlename: 'D', lastname: 'Smith', ssn: '222222222', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:mrs] }
 ]
 
 phone_numbers = [
-  { number: '123-456-7890', comment: 'This is a comment' },
-  { number: '123-456-7891', comment: 'This is a comment' },
-  { number: '123-456-7892', comment: 'This is a comment' },
-  { number: '123-456-7893', comment: 'This is a comment' }
+  { number: '1234567890', comment: 'This is a comment' },
+  { number: '1234567891', comment: 'This is a comment' },
+  { number: '1234567892', comment: 'This is a comment' },
+  { number: '1234567893', comment: 'This is a comment' }
 ]
 
 emails = [

@@ -29,6 +29,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         format.html { redirect_to person_url(@person), notice: 'Person was successfully created.' }
+        format.turbo_stream
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,6 +58,8 @@ class PeopleController < ApplicationController
     respond_to do |format|
       format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
       format.json { head :no_content }
+      # THe page doesn't update automatically... maybe this is where those destroy.turbo_stream.erb files come in?
+      # format.turbo_stream
     end
   end
 

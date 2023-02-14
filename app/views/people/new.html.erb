@@ -3,4 +3,6 @@
   <%= link_to 'Back', people_path, class: 'btn btn-outline-primary' %>
 </div>
 
-<%= render 'form', person: @person %>
+<%= turbo_frame_tag @person do %>
+  <%= render 'form', person: @person %>
+<% end %>
