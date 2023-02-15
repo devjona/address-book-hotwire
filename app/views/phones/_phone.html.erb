@@ -5,10 +5,6 @@
         <%= phones_form.label :number, "Phone number", class: "form-label" %>
         <%= phones_form.phone_field :number, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*', :required => true %>
       </div>
-      <div class="form-check pb-1">
-        <%= phones_form.check_box :_destroy, class: "form-check-input" %>
-        <%= phones_form.label :_destroy, "Remove", class: "form-check-label text-danger" %>
-      </div>
       <div class="">
         <%= phones_form.label :comment, "Comment", class: "form-label" %>
         <%= phones_form.text_area :comment, class: "form-control" %>

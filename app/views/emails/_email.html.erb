@@ -5,10 +5,6 @@
         <%= emails_form.label :address, "Email address", class: "form-label" %>
         <%= emails_form.email_field :address, class: "form-control", :required => true %>
       </div>
-      <div class="form-check pb-1">
-        <%= emails_form.check_box :_destroy, class: "form-check-input" %>
-        <%= emails_form.label :_destroy, "Remove", class: "form-check-label text-danger" %>
-      </div>
       <div class="">
         <%= emails_form.label :comment, "Comment", class: "form-label" %>
         <%= emails_form.text_area :comment, class: "form-control" %>
