@@ -1,14 +1,26 @@
 <div class="gap-3 border rounded-3 p-3 mb-3 shadow">
-  <%= form.fields_for :emails do |emails_form| %>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :emails, child_index: "NEW_RECORD" do |emails_form| %>
+      <%= render "emails/email_form", f: emails_form %>
+    </template>
+  <% end %>
+
+  <%= form.fields_for :emails do |f| %>
+    <%# <%= render "emails/email_form", f: emails_form  %>
     <div class="mb-2 flex-wrap flex-grow-1 d-flex gap-3 align-items-start border border-light bg-light rounded-3 p-3">
       <div class="flex-grow-1">
-        <%= emails_form.label :address, "Email address", class: "form-label" %>
-        <%= emails_form.email_field :address, class: "form-control", :required => true %>
+        <%= f.label :address, "Email address", class: "form-label" %>
+        <%= f.email_field :address, class: "form-control", :required => true %>
       </div>
       <div class="">
-        <%= emails_form.label :comment, "Comment", class: "form-label" %>
-        <%= emails_form.text_area :comment, class: "form-control" %>
+        <%= f.label :comment, "Comment", class: "form-label" %>
+        <%= f.text_area :comment, class: "form-control" %>
       </div>
     </div>
   <% end %>
+
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <button type="button" data-action="nested-form#add" class="btn btn-outline-primary">Add Another Email</button>
 </div>
