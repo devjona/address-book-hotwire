@@ -24,6 +24,17 @@ class PeopleTest < ApplicationSystemTestCase
     assert_text 'Tim Zam'
   end
 
+  # test 'creating a Person with insufficient info' do
+  #   sign_in_as(@user)
+  #   visit people_url
+  #   click_on 'Add a Person'
+  #   fill_in_second_person_insufficient_dependent_records
+  #   click_on 'Submit'
+  #   byebug
+  #   assert_text 'Please fill out this field'
+  #   # You need a flash notice on the page of some sort
+  # end
+
   test 'updating a Person' do
     sign_in_as(@user)
     new_name = 'Sigroy'
@@ -54,6 +65,22 @@ class PeopleTest < ApplicationSystemTestCase
     end
 
     assert_no_text @person.firstname
+  end
+
+  def fill_in_second_person_insufficient_dependent_records
+    fill_in 'Firstname', with: 'Tim'
+    fill_in 'Lastname', with: 'Zam'
+    fill_in 'Birthdate', with: Time.new(1990, 4, 1)
+    fill_in 'Comment', match: :first, with: 'This is a comment.'
+    fill_in 'Ssn', with: '123456789'
+    select 'Mr.', from: 'Salutation'
+    fill_in 'Email address', with: ''
+    fill_in 'Phone number', with: ''
+    fill_in 'Street', with: ''
+    fill_in 'Town', with: ''
+    fill_in 'Zip', with: ''
+    fill_in 'State', with: ''
+    select 'USA', from: 'Country'
   end
 
   def fill_in_second_person
