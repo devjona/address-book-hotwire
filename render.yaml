@@ -1,0 +1,18 @@
+databases:
+  - name: address_book_production
+    databaseName: address_book_production
+    user: jona_address_book_prod
+
+services:
+  - type: web
+    name: address_book_production
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: address_book_production
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
