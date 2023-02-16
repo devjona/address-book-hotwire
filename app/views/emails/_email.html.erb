@@ -1,4 +1,4 @@
-<div class="gap-3 border rounded-3 p-3 mb-3 shadow">
+<div class="border rounded-3 p-3 mb-3 shadow">
   <template data-nested-form-target="template">
     <%= form.fields_for :emails, child_index: "NEW_RECORD" do |emails_form| %>
       <%= render "emails/email_form", f: emails_form %>

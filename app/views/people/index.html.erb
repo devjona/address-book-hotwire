@@ -1,9 +1,4 @@
 <p id="notice"><%= notice %></p>
-<h1>Hello!</h1>
-<div data-controller="hello" class="w-25">
-  <input data-hello-target="value" type="text" class="form-control">
-  <button class="btn btn-outline-primary"  data-action="click->hello#greet">Greet</button>
-</div>
 <h2>People</h2>
 <%= link_to 'Add a Person', new_person_path, class: 'btn btn-primary my-4', data: { turbo_frame: dom_id(Person.new) } %>
 
