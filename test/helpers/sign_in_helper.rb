@@ -12,4 +12,8 @@ module SignInHelper
   def post_sign_in_as_user(user)
     post login_url, params: { email: user.email, password: default_password }
   end
+
+  def post_sign_in_as_user_json(user)
+    post login_url, params: { email: user.email, password: default_password }, as: :json
+  end
 end
