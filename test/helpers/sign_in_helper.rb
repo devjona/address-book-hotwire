@@ -7,4 +7,9 @@ module SignInHelper
     fill_in 'Password', with: default_password
     click_on 'Login'
   end
+
+  # a hlper method to sign in as a user in a controller test
+  def post_sign_in_as_user(user)
+    post login_url, params: { email: user.email, password: default_password }
+  end
 end
