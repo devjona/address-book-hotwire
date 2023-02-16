@@ -2,10 +2,10 @@ require 'application_system_test_case'
 
 class PeopleTest < ApplicationSystemTestCase
   setup do
-    @person = people(:person_one)
-    @phone = phones(:phone_one)
+    @person = people(:one)
+    @phone = phones(:one)
     @email = emails(:email_one)
-    @address = addresses(:address_one)
+    @address = addresses(:one)
     @user = users(:one)
   end
 

@@ -8,7 +8,7 @@
 # I can't generate Time objects for Ruby from YML
 # Create them in the .rb file when needed.
 
-person_one: !!omap
+one: !!omap
   - id: 1
   - firstname: Pablo
   - middlename: Enrique

@@ -1,5 +1,5 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-phone_one: !!omap
+one: !!omap
   - number: 2102223333
   - comment: MyText
   - person_id: 1

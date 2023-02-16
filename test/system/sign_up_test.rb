@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class LoginTest < ApplicationSystemTestCase
   setup do
-    @person = people(:person_one)
+    @person = people(:one)
     @user = users(:one)
   end
 
