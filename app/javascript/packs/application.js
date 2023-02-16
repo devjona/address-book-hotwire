@@ -7,7 +7,7 @@ import Rails from "@rails/ujs";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "@hotwired/turbo-rails";
-// import { Popover } from "bootstrap";
+import { Popover } from "bootstrap";
 import "controllers";
 
 Rails.start();
