@@ -14,7 +14,7 @@ class LoginTest < ApplicationSystemTestCase
 
   test 'login with valid credentials, logout' do
     sign_in_as(@user)
-    assert_selector 'h1', text: 'People'
+    assert_text 'People'
     assert_text @person.firstname
     assert_text 'Show'
     assert_text 'Edit'
