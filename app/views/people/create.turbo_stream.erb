@@ -1,2 +1,3 @@
 <%= turbo_stream.prepend "people", @person %>
 <%= turbo_stream.update Person.new, "" %>
+<%= render_turbo_stream_flash_messages %>

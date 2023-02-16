@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
+
+import RemovalsController from "./removals_controller"
+application.register("removals", RemovalsController)

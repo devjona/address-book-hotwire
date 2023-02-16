@@ -16,8 +16,13 @@
         <%= render 'layouts/nav' %>
       </div>
     </div>
+
     <div class="container">
+      <div id="flash" class="flash">
+        <%= render "layouts/flash" %>
+      </div>
+
       <%= yield %>
-    </div>
-  </body>
-</html>
+
+    </body>
+  </html>

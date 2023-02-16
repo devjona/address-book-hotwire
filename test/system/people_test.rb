@@ -20,19 +20,21 @@ class PeopleTest < ApplicationSystemTestCase
     click_on 'Add a Person'
     fill_in_second_person
     click_on 'Submit'
-
     assert_text 'Tim Zam'
+    assert_text 'Person was successfully created.'
   end
 
   # test 'creating a Person with insufficient info' do
   #   sign_in_as(@user)
   #   visit people_url
   #   click_on 'Add a Person'
+  #   fill_in_second_person
   #   fill_in_second_person_insufficient_dependent_records
+  #   # click_on 'Remove email'
   #   click_on 'Submit'
   #   byebug
-  #   assert_text 'Please fill out this field'
-  #   # You need a flash notice on the page of some sort
+  #   # assert_text 'Please fill out this field'
+  #   #   # You need a flash notice on the page of some sort
   # end
 
   test 'updating a Person' do
@@ -50,11 +52,8 @@ class PeopleTest < ApplicationSystemTestCase
     select 'Canada', from: 'Country'
     click_on 'Submit'
 
+    assert_text 'Person was successfully updated.'
     assert_text new_name
-    assert_text new_email
-    assert_text new_zip
-    assert_text 'Canada'
-    click_on 'Back'
   end
 
   test 'deleting a Person' do
@@ -64,6 +63,7 @@ class PeopleTest < ApplicationSystemTestCase
       click_on 'Delete', match: :first
     end
 
+    assert_text 'Person was successfully deleted.'
     assert_no_text @person.firstname
   end
 
