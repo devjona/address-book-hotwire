@@ -20,7 +20,6 @@ class PeopleTest < ApplicationSystemTestCase
     click_on 'Add a Person'
     fill_in_second_person
     click_on 'Submit'
-    byebug
     assert_text 'Tim Zam'
     assert_text 'Person was successfully created.'
   end
