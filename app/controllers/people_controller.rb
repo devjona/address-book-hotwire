@@ -21,7 +21,10 @@ class PeopleController < ApplicationController
   end
 
   # GET /people/1/edit
-  def edit; end
+  def edit
+    @person
+    @emails = @person.emails
+  end
 
   # POST /people or /people.json
   def create
@@ -30,7 +33,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         format.html { redirect_to person_url(@person), notice: 'Person was successfully created.' }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,6 +47,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.update(person_params)
         format.html { redirect_to person_url(@person), notice: 'Person was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Person was successfully updated.' }
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +64,7 @@ class PeopleController < ApplicationController
       format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
       format.json { head :no_content }
       # THe page doesn't update automatically... maybe this is where those destroy.turbo_stream.erb files come in?
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = 'Person was successfully deleted.' }
     end
   end
 

@@ -1,0 +1,12 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <div class="mb-2 flex-wrap  d-flex gap-3 align-items-start border border-light bg-light rounded-3 p-3">
+    <div class="flex-grow-1">
+      <%= f.label :address, "Email address", class: "form-label" %>
+      <%= f.email_field :address, class: "form-control", :required => true %>
+    </div>
+    <div class="w-100">
+      <%= f.label :comment, "Comment", class: "form-label" %>
+      <%= f.text_area :comment, class: "form-control" %>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-<h1>People</h1>
+<h2>People</h2>
 <%= link_to 'Add a Person', new_person_path, class: 'btn btn-primary my-4', data: { turbo_frame: dom_id(Person.new) } %>
 
 <div class="d-flex flex-column justify-content-around">
   <%# <div class="col col-md-9 col-lg-6 col-xl-5"> %>
-  <div class="col col-md-9">
+  <div class="col col-md-12">
     <%= turbo_frame_tag Person.new %>
     <%= turbo_frame_tag "people" do %>
       <%= render @people %>

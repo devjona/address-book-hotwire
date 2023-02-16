@@ -1,0 +1,13 @@
+.flash {
+  position: fixed;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  max-width: 100%;
+  width: max-content;
+
+  &__message {
+    animation: appear-then-fade 4s both;
+  }
+}

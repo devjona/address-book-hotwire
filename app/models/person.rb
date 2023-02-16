@@ -19,4 +19,5 @@ class Person < ApplicationRecord
   enum salutation: { mr: 'Mr.', ms: 'Ms.', mrs: 'Mrs.' }
 
   validates :firstname, :lastname, presence: true
+  validates_associated :phones, :emails, :addresses
 end

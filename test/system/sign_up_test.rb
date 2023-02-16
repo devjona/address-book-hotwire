@@ -15,7 +15,7 @@ class LoginTest < ApplicationSystemTestCase
 
     click_on 'Sign Up'
 
-    assert_selector 'h1', text: 'People'
+    assert_text 'People'
     assert_text @person.firstname
 
     click_on 'Log out'
