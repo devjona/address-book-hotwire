@@ -1,7 +1,8 @@
-<div class="d-flex flex-wrap gap-3 border rounded-3 p-3 mb-3 shadow">
+<div class="border rounded-3 p-3 mb-3 shadow">
+  <h3>Phone info</h3>
   <%= form.fields_for :phones do |phones_form| %>
-    <div class="mb-2 flex-wrap flex-grow-1 d-flex gap-3 align-items-start border border-light bg-light rounded-3 p-3">
-      <div class="flex-grow-1">
+    <div class="mb-2 border border-light bg-light rounded-3 p-3">
+      <div class="mb-2">
         <%= phones_form.label :number, "Phone number", class: "form-label" %>
         <%= phones_form.phone_field :number, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*', :required => true %>
       </div>
@@ -11,4 +12,5 @@
       </div>
     </div>
   <% end %>
+
 </div>

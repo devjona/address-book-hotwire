@@ -10,61 +10,64 @@
       </ul>
     </div>
   <% end %>
-  <div class="rounded-3 p-3 mb-3 bg-light">
-    <div class="row mb-lg-3">
-      <%# Salutation %>
-      <div class="mb-2 mb-md-0 col-12 col-md-4 col-lg-2 col-xl-2">
-        <%= form.label :salutation, class: "form-label" %>
-        <%= form.collection_select :salutation, Person.salutations, :first, :last, { include_blank: true }, class: "form-select" %>
+  <div class="border rounded-3 p-3 mb-3 shadow">
+    <h3>Personal info</h3>
+    <div class="rounded-3 p-3 mb-3 bg-light">
+      <div class="row mb-lg-3">
+        <%# Salutation %>
+        <div class="mb-2 mb-md-0 col-12 col-md-4 col-lg-2 col-xl-2">
+          <%= form.label :salutation, class: "form-label" %>
+          <%= form.collection_select :salutation, Person.salutations, :first, :last, { include_blank: true }, class: "form-select" %>
+        </div>
+        <%# Birthdate and SSN %>
+        <div class="mb-2 mb-md-0 col-12 col-md-4 col-lg-4 offset-lg-2">
+          <%= form.label :birthdate, class: "form-label" %>
+          <%= form.date_field :birthdate, class: "form-control" %>
+        </div>
+        <div class="mb-2 mb-md-0 col-12 col-md-4 col-lg-4">
+          <%= form.label :ssn, class: "form-label" %>
+          <%= form.text_field :ssn, class: "form-control", :minlength => 9, :maxlength => 9, :inputmode => 'numeric', :pattern => '\d*' %>
+        </div>
       </div>
-      <%# Birthdate and SSN %>
-      <div class="mb-2 mb-md-0 col-12 col-md-4 col-lg-4 offset-lg-2">
-        <%= form.label :birthdate, class: "form-label" %>
-        <%= form.date_field :birthdate, class: "form-control" %>
-      </div>
-      <div class="mb-2 mb-md-0 col-12 col-md-4 col-lg-4">
-        <%= form.label :ssn, class: "form-label" %>
-        <%= form.text_field :ssn, class: "form-control", :minlength => 9, :maxlength => 9, :inputmode => 'numeric', :pattern => '\d*' %>
+      <%# Name Inputs %>
+      <div class="row">
+        <div class="mb-2 mb-md-0 col-12 col-md-4">
+          <%= form.label :firstname, "Firstname (required)", class: "form-label" %>
+          <%= form.text_field :firstname, class: "form-control", :required => true %>
+        </div>
+        <div class="mb-2 mb-md-0 col-12 col-md-4">
+          <%= form.label :middlename, class: "form-label" %>
+          <%= form.text_field :middlename, class: "form-control" %>
+        </div>
+        <div class="mb-2 mb-md-0 col-12 col-md-4">
+          <%= form.label :lastname, "Lastname (required)", class: "form-label" %>
+          <%= form.text_field :lastname, class: "form-control", :required => true %>
+        </div>
       </div>
     </div>
-    <%# Name Inputs %>
-    <div class="row">
-      <div class="mb-2 mb-md-0 col-12 col-md-4">
-        <%= form.label :firstname, "Firstname (required)", class: "form-label" %>
-        <%= form.text_field :firstname, class: "form-control", :required => true %>
-      </div>
-      <div class="mb-2 mb-md-0 col-12 col-md-4">
-        <%= form.label :middlename, class: "form-label" %>
-        <%= form.text_field :middlename, class: "form-control" %>
-      </div>
-      <div class="mb-2 mb-md-0 col-12 col-md-4">
-        <%= form.label :lastname, "Lastname (required)", class: "form-label" %>
-        <%= form.text_field :lastname, class: "form-control", :required => true %>
-      </div>
+  </div>
+  <div class="row">
+    <%# Email Inputs %>
+    <div class="col-12 col-md-6">
+      <%= render partial: 'emails/email', locals: { form: form }%>
+    </div>
+    <%# Phone Inputs %>
+    <div class="col-12 col-md-6">
+      <%= render partial: 'phones/phone', locals: { form: form }%>
     </div>
   </div>
-</div>
-<div class="row">
-  <%# Email Inputs %>
-  <div class="col-12 col-md-6">
-    <%= render partial: 'emails/email', locals: { form: form }%>
+  <%# Address Inputs %>
+  <div class="mb-2 p-3 border shadow rounded">
+    <h3>Address info</h3>
+    <%= render partial: 'addresses/address', locals: { form: form } %>
   </div>
-  <%# Phone Inputs %>
-  <div class="col-12 col-md-6">
-    <%= render partial: 'phones/phone', locals: { form: form }%>
+  <%# Comments %>
+  <div class="mb-2 p-3 border shadow rounded">
+    <%= form.label :comment, class: "form-label" %>
+    <%= form.text_area :comment, class: "form-control" %>
   </div>
-</div>
-<%# Address Inputs %>
-<div class="mb-2 p-3 border shadow rounded">
-  <%= render partial: 'addresses/address', locals: { form: form } %>
-</div>
-<%# Comments %>
-<div class="mb-2 p-3 border shadow rounded">
-  <%= form.label :comment, class: "form-label" %>
-  <%= form.text_area :comment, class: "form-control" %>
-</div>
-<%# SUBMIT %>
-<div class="my-4">
-  <%= button_tag "Submit", type: 'submit', class: 'btn btn-primary' %>
-</div>
+  <%# SUBMIT %>
+  <div class="my-4">
+    <%= button_tag "Submit", type: 'submit', class: 'btn btn-primary' %>
+  </div>
 <% end %>

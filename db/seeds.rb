@@ -24,11 +24,21 @@ phone_numbers = [
   { number: '1234567893', comment: 'This is a comment' }
 ]
 
+extra_phone_numbers = [
+  { number: '1234567894', comment: 'This is a comment' },
+  { number: '1234567895', comment: 'This is a comment' }
+]
+
 emails = [
   { address: 'some@email.com', comment: 'This is a comment' },
   { address: 'another@email.com', comment: 'This is a comment' },
   { address: 'hey@dude.com', comment: 'This is a comment' },
   { address: 'yo@squid.co', comment: 'This is a comment' }
+]
+
+extra_emails = [
+  { address: 'extra@extra.com', comment: 'This is a comment' },
+  { address: 'super@fun.com', comment: 'This is a comment' }
 ]
 
 addresses = [
@@ -38,9 +48,30 @@ addresses = [
   { street: '101 Main St', town: 'Townsville', zip: '12345', state: 'CA', country: 'USA' }
 ]
 
+extra_addresses = [
+  { street: '102 Main St', town: 'Townsville', zip: '12345', state: 'CA', country: 'USA' },
+  { street: '103 Main St', town: 'Townsville', zip: '12345', state: 'CA', country: 'USA' }
+]
+
 seed_people.each_with_index do |person, index|
   Person.create(person)
   Email.create(emails[index].merge(person_id: Person.last.id))
   Phone.create(phone_numbers[index].merge(person_id: Person.last.id))
   Address.create(addresses[index].merge(person_id: Person.last.id))
 end
+
+def add_additional_data(person_id, extra_emails, extra_phone_numbers, extra_addresses)
+  extra_emails.each do |email|
+    Email.create(email.merge(person_id: person_id))
+  end
+
+  extra_phone_numbers.each do |phone_number|
+    Phone.create(phone_number.merge(person_id: person_id))
+  end
+
+  extra_addresses.each do |address|
+    Address.create(address.merge(person_id: person_id))
+  end
+end
+
+add_additional_data(Person.where(firstname: 'Sally').first.id, extra_emails, extra_phone_numbers, extra_addresses)
