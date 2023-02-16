@@ -1,16 +1,20 @@
-<div class="border rounded-3 p-3 mb-3 shadow">
+<div id="phone-fields" class="border rounded-3 p-3 mb-3 shadow">
   <h3>Phone info</h3>
-  <%= form.fields_for :phones do |phones_form| %>
-    <div class="mb-2 border border-light bg-light rounded-3 p-3">
-      <div class="mb-2">
-        <%= phones_form.label :number, "Phone number", class: "form-label" %>
-        <%= phones_form.phone_field :number, class: "form-control", :minlength => 10, :maxlength => 10, :inputmode => 'numeric', :pattern => '\d*', :required => true %>
-      </div>
-      <div class="w-100">
-        <%= phones_form.label :comment, "Comment", class: "form-label" %>
-        <%= phones_form.text_area :comment, class: "form-control" %>
-      </div>
-    </div>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :phones, child_index: "NEW_RECORD" do |phones_form| %>
+      <%= render "phones/phone_form", f: phones_form %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :phones do |phone_form| %>
+    <%= render "phones/phone_form", f: phone_form %>
   <% end %>
+
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <div class="d-flex justify-content-end pt-3 pe-3">
+    <button type="button" data-action="nested-form#add" class="btn btn-sm btn-outline-primary">Add Another Phone</button>
+  </div>
 
 </div>
