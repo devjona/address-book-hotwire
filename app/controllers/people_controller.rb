@@ -21,7 +21,10 @@ class PeopleController < ApplicationController
   end
 
   # GET /people/1/edit
-  def edit; end
+  def edit
+    @person
+    @emails = @person.emails
+  end
 
   # POST /people or /people.json
   def create
