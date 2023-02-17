@@ -10,8 +10,8 @@
         <%= f.text_field :town, class: "form-control", :required => true %>
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
-        <%= f.label :zip, "Zip", class: "form-label", :minlength => 5, :maxlength => 5, :inputmode => 'numeric' %>
-        <%= f.text_field :zip, class: "form-control", :required => true %>
+        <%= f.label :zip, "Zip", class: "form-label" %>
+        <%= f.text_field :zip, class: "form-control", :required => true, :minlength => 5, :maxlength => 5, :inputmode => 'numeric' %>
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
         <%= f.label :state, "State", class: "form-label" %>
