@@ -1,6 +1,6 @@
-<div id="phone-fields" class="border rounded-3 p-3 mb-3 shadow">
+<div class="border rounded-3 p-3 mb-3 shadow">
   <h3>Phone info</h3>
-  <template data-nested-form-target="template">
+  <template data-nested-form-target="phoneTemplate">
     <%= form.fields_for :phones, child_index: "NEW_RECORD" do |phones_form| %>
       <%= render "phones/phone_form", f: phones_form %>
     <% end %>
@@ -11,10 +11,10 @@
   <% end %>
 
   <!-- Inserted elements will be injected before that target. -->
-  <div data-nested-form-target="target"></div>
+  <div data-nested-form-target="phone"></div>
 
   <div class="d-flex justify-content-end pt-3 pe-3">
-    <button type="button" data-action="nested-form#add" class="btn btn-sm btn-outline-primary">Add Another Phone</button>
+    <button type="button" data-action="nested-form#add" data-field-scope="phone" class="btn btn-sm btn-outline-primary">Add Another Phone</button>
   </div>
 
 </div>
