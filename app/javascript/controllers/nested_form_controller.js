@@ -1,8 +1,14 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["phone", "phoneTemplate", "email", "emailTemplate"];
-  // static targets = ["target", "template"];
+  static targets = [
+    "phone",
+    "phoneTemplate",
+    "email",
+    "emailTemplate",
+    "address",
+    "addressTemplate",
+  ];
   static values = {
     wrapperSelector: {
       type: String,
@@ -19,14 +25,12 @@ export default class extends Controller {
     const fieldScope = e.target.dataset.fieldScope;
     const scopedTarget = this[`${fieldScope}Target`];
     const scopedTemplate = this[`${fieldScope}TemplateTarget`];
-    // debugger;
 
     // 1. The template is updated with a unique identifier
     const content = scopedTemplate.innerHTML.replace(
       /NEW_RECORD/g,
       new Date().getTime().toString()
     );
-    // debugger;
     // 2. The template is inserted into the DOM
     scopedTarget.insertAdjacentHTML("beforebegin", content);
   }

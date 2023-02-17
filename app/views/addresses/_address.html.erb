@@ -1,26 +1,16 @@
+<template data-nested-form-target="addressTemplate">
+  <%= form.fields_for :addresses, child_index: "NEW_RECORD" do |addresses_form| %>
+    <%= render "addresses/address_form", f: addresses_form %>
+  <% end %>
+</template>
+
 <%= form.fields_for :addresses do |addresses_form| %>
-  <div class="rounded-3 p-3 mb-3 bg-light">
-    <div class="row">
-      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-        <%= addresses_form.label :street, "Street", class: "form-label" %>
-        <%= addresses_form.text_field :street, class: "form-control", :required => true %>
-      </div>
-      <div class="col-12  col-sm-6 col-lg-4 col-xl-3">
-        <%= addresses_form.label :town, "Town", class: "form-label" %>
-        <%= addresses_form.text_field :town, class: "form-control", :required => true %>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
-        <%= addresses_form.label :zip, "Zip", class: "form-label", :minlength => 5, :maxlength => 5, :inputmode => 'numeric' %>
-        <%= addresses_form.text_field :zip, class: "form-control", :required => true %>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
-        <%= addresses_form.label :state, "State", class: "form-label" %>
-        <%= addresses_form.text_field :state, class: "form-control" %>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
-        <%= addresses_form.label :country, class: "form-label" %>
-        <%= addresses_form.collection_select :country, Address.countries, :first, :last, { include_blank: true }, class: "form-select" %>
-      </div>
-    </div>
-  </div>
+  <%= render "addresses/address_form", f: addresses_form %>
 <% end %>
+
+<!-- Inserted elements will be injected before that target. -->
+<div data-nested-form-target="address"></div>
+
+<div class="d-flex justify-content-end pt-3 pe-3">
+  <button type="button" data-action="nested-form#add" data-field-scope="address" class="btn btn-sm btn-outline-primary">Add Another Email</button>
+</div>

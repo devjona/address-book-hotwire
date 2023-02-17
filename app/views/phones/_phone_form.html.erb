@@ -8,6 +8,7 @@
       <%= f.label :comment, "Comment", class: "form-label" %>
       <%= f.text_area :comment, class: "form-control" %>
     </div>
+    <%= f.hidden_field :_destroy %>
     <div class="d-flex justify-content-end pt-3">
       <button type="button" data-action="nested-form#remove" class="btn btn-sm btn-outline-danger">Remove phone</button>
     </div>

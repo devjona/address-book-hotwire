@@ -1,0 +1,30 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <div class="rounded-3 p-3 mb-3 bg-light">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <%= f.label :street, "Street", class: "form-label" %>
+        <%= f.text_field :street, class: "form-control", :required => true %>
+      </div>
+      <div class="col-12  col-sm-6 col-lg-4 col-xl-3">
+        <%= f.label :town, "Town", class: "form-label" %>
+        <%= f.text_field :town, class: "form-control", :required => true %>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+        <%= f.label :zip, "Zip", class: "form-label", :minlength => 5, :maxlength => 5, :inputmode => 'numeric' %>
+        <%= f.text_field :zip, class: "form-control", :required => true %>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+        <%= f.label :state, "State", class: "form-label" %>
+        <%= f.text_field :state, class: "form-control" %>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+        <%= f.label :country, class: "form-label" %>
+        <%= f.collection_select :country, Address.countries, :first, :last, { include_blank: true }, class: "form-select" %>
+      </div>
+      <%= f.hidden_field :_destroy %>
+      <div class="d-flex justify-content-end pt-3">
+        <button type="button" data-action="nested-form#remove" class="btn btn-sm btn-outline-danger">Remove address</button>
+      </div>
+    </div>
+  </div>
+</div>
