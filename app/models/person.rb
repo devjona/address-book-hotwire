@@ -11,13 +11,17 @@ class Person < ApplicationRecord
                                                                          }
 
   accepts_nested_attributes_for :addresses, allow_destroy: true, reject_if: lambda { |attributes|
-                                                                              attributes['street'].blank? &&
-                                                                                attributes['town'].blank? &&
-                                                                                attributes['zip'].blank?
+                                                                              attributes['street'].blank? && attributes['town'].blank? && attributes['zip'].blank?
                                                                             }
 
   enum salutation: { mr: 'Mr.', ms: 'Ms.', mrs: 'Mrs.' }
 
   validates :firstname, :lastname, presence: true
   validates_associated :phones, :emails, :addresses
+
+  def add_form_if_no_nested_attributes
+    phones.build if phones.empty?
+    emails.build if emails.empty?
+    addresses.build if addresses.empty?
+  end
 end
