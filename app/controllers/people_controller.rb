@@ -27,7 +27,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
-    @person
+    @person.add_form_if_no_nested_attributes
   end
 
   # POST /people or /people.json

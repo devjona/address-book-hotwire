@@ -1,17 +1,19 @@
 <div class="border rounded-3 p-3 mb-3 shadow">
   <h3>Email info</h3>
-  <template data-nested-form-target="template">
+  <template data-nested-form-target="emailTemplate">
     <%= form.fields_for :emails, child_index: "NEW_RECORD" do |emails_form| %>
       <%= render "emails/email_form", f: emails_form %>
-    </template>
-  <% end %>
+    <% end %>
+  </template>
 
   <%= form.fields_for :emails do |emails_form| %>
     <%= render "emails/email_form", f: emails_form %>
   <% end %>
 
   <!-- Inserted elements will be injected before that target. -->
-  <div data-nested-form-target="target"></div>
+  <div data-nested-form-target="email"></div>
 
-  <%# <button type="button" data-action="nested-form#add" class="btn btn-outline-primary">Add Another Email</button> %>
+  <div class="d-flex justify-content-end pt-3 pe-3">
+    <button type="button" data-action="nested-form#add" data-field-scope="email" class="btn btn-sm btn-outline-primary">Add Another Email</button>
+  </div>
 </div>
