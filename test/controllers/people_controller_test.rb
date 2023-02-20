@@ -49,6 +49,32 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to person_url(Person.last)
   end
 
+  test 'should not create person' do
+    post_sign_in_as_user(users(:one))
+    assert_no_difference('Person.count') do
+      post people_url, params: {
+        person: {
+          firstname: '',
+          lastname: '',
+          ssn: '',
+          salutation: '',
+          birthdate: '',
+          phones_attributes: [
+            number: ''
+          ],
+          emails_attributes: [
+            address: ''
+          ],
+          addresses_attributes: [
+            street: '', town: '', state: '', zip: '', country: ''
+          ]
+        }
+      }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
   test 'should show person' do
     post_sign_in_as_user(users(:one))
     get person_url(@person)

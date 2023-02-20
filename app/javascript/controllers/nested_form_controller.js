@@ -17,7 +17,7 @@ export default class extends Controller {
   };
 
   connect() {
-    console.log("targets: ", this.targets);
+    console.log("NestedFormController connected");
   }
 
   add(e) {
