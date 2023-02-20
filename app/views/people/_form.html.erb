@@ -1,11 +1,11 @@
-<%= form_with model: @person, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper'} do |form| %>
+<%= form_with model: person, id: dom_id(person), data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper'} do |form| %>
   <% if person.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+      <h3><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h3>
 
       <ul>
         <% person.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-danger"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -26,14 +26,18 @@
         </div>
         <div class="mb-2 mb-md-0 col-12 col-md-4 col-lg-4">
           <%= form.label :ssn, "SSN: (#########)", class: "form-label" %>
-          <%= form.text_field :ssn, class: "form-control", :minlength => 9, :maxlength => 9, :inputmode => 'numeric', :pattern => '\d*' %>
+          <%= form.text_field :ssn, class: "form-control" %>
         </div>
       </div>
       <%# Name Inputs %>
       <div class="row">
         <div class="mb-2 mb-md-0 col-12 col-md-4">
           <%= form.label :firstname, "Firstname (required)", class: "form-label" %>
-          <%= form.text_field :firstname, class: "form-control", :required => true %>
+          <%= form.text_field :firstname, class: "form-control" %>
+          <div class="invalid-feedback">
+            Please provide a Firstname.
+          </div>
+          <div class="valid-feedback">Looks good!</div>
         </div>
         <div class="mb-2 mb-md-0 col-12 col-md-4">
           <%= form.label :middlename, class: "form-label" %>
@@ -41,7 +45,7 @@
         </div>
         <div class="mb-2 mb-md-0 col-12 col-md-4">
           <%= form.label :lastname, "Lastname (required)", class: "form-label" %>
-          <%= form.text_field :lastname, class: "form-control", :required => true %>
+          <%= form.text_field :lastname, class: "form-control" %>
         </div>
       </div>
     </div>

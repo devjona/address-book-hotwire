@@ -20,14 +20,12 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
-    @person.phones.build
-    @person.emails.build
-    @person.addresses.build
+    @person.build_form_for_nested_attributes
   end
 
   # GET /people/1/edit
   def edit
-    @person.add_form_if_no_nested_attributes
+    @person.build_form_for_nested_attributes
   end
 
   # POST /people or /people.json
@@ -40,6 +38,11 @@ class PeopleController < ApplicationController
         format.turbo_stream { flash.now[:notice] = 'Person was successfully created.' }
         format.json { render :show, status: :created, person: @person }
       else
+        @person.build_form_for_nested_attributes
+
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(@person, partial: 'people/form', locals: { person: @person })
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
