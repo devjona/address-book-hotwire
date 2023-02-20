@@ -46,6 +46,31 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     assert JSON.parse(response.body)['id'] == Person.last.id
   end
 
+  test 'JSON: should not create person' do
+    post_sign_in_as_user_json(users(:one))
+    assert_no_difference('Person.count') do
+      post people_url, params: {
+        person: {
+          firstname: '',
+          lastname: '',
+          ssn: '',
+          salutation: '',
+          birthdate: '',
+          phones_attributes: [
+            number: ''
+          ],
+          emails_attributes: [
+            address: ''
+          ],
+          addresses_attributes: [
+            street: '', town: '', state: '', zip: '', country: ''
+          ]
+        }
+      }, as: :json
+    end
+    assert_response :unprocessable_entity
+  end
+
   test 'JSON: should show person' do
     post_sign_in_as_user_json(users(:one))
     get person_url(@person), as: :json

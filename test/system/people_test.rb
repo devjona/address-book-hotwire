@@ -24,6 +24,15 @@ class PeopleTest < ApplicationSystemTestCase
     assert_text 'Person was successfully created.'
   end
 
+  # test submitting a person with no data
+  test 'creating a Person with no data' do
+    sign_in_as(@user)
+    visit people_url
+    click_on 'Add a Person'
+    click_on 'Submit'
+    assert_text 'prohibited this person from being saved:'
+  end
+
   test 'updating a Person' do
     sign_in_as(@user)
     new_name = 'Sigroy'
