@@ -19,7 +19,7 @@ class Person < ApplicationRecord
   validates :firstname, :lastname, presence: true
   validates_associated :phones, :emails, :addresses
 
-  def build_form_for_nested_attributes
+  def build_nested_attributes
     phones.build if phones.empty?
     emails.build if emails.empty?
     addresses.build if addresses.empty?
