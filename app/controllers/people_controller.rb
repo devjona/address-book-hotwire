@@ -4,7 +4,8 @@ class PeopleController < ApplicationController
 
   # GET /people or /people.json
   def index
-    @people = Person.all
+    # @people = Person.all
+    @people = current_user.people
     # repond with html and json
     respond_to do |format|
       format.html

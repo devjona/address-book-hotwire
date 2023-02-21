@@ -7,12 +7,31 @@ class PeopleTest < ApplicationSystemTestCase
     @email = emails(:email_one)
     @address = addresses(:one)
     @user = users(:one)
+    @user_two = users(:two)
   end
 
   test 'visiting the people index, redirected to login' do
     visit people_url
     assert_selector 'h1', text: 'Login'
   end
+
+  # test for seeing people that belong to user
+  test 'visiting the people index' do
+    sign_in_as(@user)
+    visit people_url
+    assert_selector 'h2', text: 'People'
+    assert_text @person.firstname
+  end
+
+  # test for not seeing people that belong to other user
+  test 'visiting the people index, not seeing other user people' do
+    sign_in_as(@user_two)
+    visit people_url
+    assert_selector 'h2', text: 'People'
+    assert_no_text @person.firstname
+  end
+
+  # test submitting a person with all data
 
   test 'creating a Person' do
     sign_in_as(@user)
