@@ -13,7 +13,10 @@ class PeopleController < ApplicationController
 
   # GET /people/1 or /people/1.json
   def show
-    @person
+    @person || respond_to do |format|
+      format.html { redirect_to people_path, notice: "You don't have access to that Person" }
+      format.json { render json: { error: "You don't have access to that Person" }, status: :unauthorized }
+    end
   end
 
   # GET /people/new
