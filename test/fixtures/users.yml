@@ -1,13 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: Persona Uno
-  email: persona@uno.com
-  # password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
-  password_digest: <%= default_password_digest %>
+one: !!omap
+  - id: 1
+  - name: User Uno
+  - email: uno@user.com
+  - password_digest: <%= default_password_digest %>
 
 
-# two:
-#   name: MyString
-#   email: MyString
-#   password_digest: MyString
+two: !!omap
+  - id: 2
+  - name: User dos
+  - email: dos@user.com
+  - password_digest: <%= default_password_digest %>
