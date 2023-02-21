@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   resources :people do
     resources :phones
+    resources :emails
+    resources :addresses
   end
 end

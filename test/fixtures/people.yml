@@ -17,3 +17,15 @@ one: !!omap
   - birthdate: 
   - comment: Nice guy
   - salutation: Person.salutations[:mr]
+  - user_id: 1
+
+two: !!omap
+  - id: 2
+  - firstname: Frankie
+  - middlename: Eric
+  - lastname: Arnoldsky
+  - ssn: 111247333
+  - birthdate: 
+  - comment: Nice guy
+  - salutation: Person.salutations[:mr]
+  - user_id: 2
