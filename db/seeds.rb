@@ -6,14 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Create a user with email name and password
+user = User.create!(name: 'Test User', email: 'test@user.com', password: 'password')
+
 seed_people = [
-  { firstname: 'Sam', middlename: 'A', lastname: 'Smith', ssn: '123456789', birthdate: '1980-01-01',
+  { user_id: user.id, firstname: 'Sam', middlename: 'A', lastname: 'Smith', ssn: '123456789', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:mr] },
-  { firstname: 'John', middlename: 'B', lastname: 'Doe', ssn: '987654321', birthdate: '1980-01-01',
+  { user_id: user.id, firstname: 'John', middlename: 'B', lastname: 'Doe', ssn: '987654321', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:mr] },
-  { firstname: 'Jane', middlename: 'C', lastname: 'Doe', ssn: '111111111', birthdate: '1980-01-01',
+  { user_id: user.id, firstname: 'Jane', middlename: 'C', lastname: 'Doe', ssn: '111111111', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:ms] },
-  { firstname: 'Sally', middlename: 'D', lastname: 'Smith', ssn: '222222222', birthdate: '1980-01-01',
+  { user_id: user.id, firstname: 'Sally', middlename: 'D', lastname: 'Smith', ssn: '222222222', birthdate: '1980-01-01',
     comment: 'This is a comment', salutation: Person.salutations[:mrs] }
 ]
 

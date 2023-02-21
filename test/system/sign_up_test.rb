@@ -15,8 +15,10 @@ class LoginTest < ApplicationSystemTestCase
 
     click_on 'Sign Up'
 
+    # It would be helpful to have an 'empty state' for someone who signs up and has no people
     assert_text 'People'
-    assert_text @person.firstname
+    assert_text 'Add a Person'
+    assert_no_text 'Show'
 
     click_on 'Log out'
     assert_selector 'h1', text: 'Login'

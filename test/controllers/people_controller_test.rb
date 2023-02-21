@@ -2,6 +2,7 @@ require 'test_helper'
 
 class PeopleControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
     @person = people(:one)
   end
 
@@ -12,19 +13,19 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     get people_url
     assert_response :success
   end
 
   test 'should get new' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     get new_person_url
     assert_response :success
   end
 
   test 'should create person' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     assert_difference('Person.count') do
       post people_url, params: {
         person: {
@@ -50,7 +51,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not create person' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     assert_no_difference('Person.count') do
       post people_url, params: {
         person: {
@@ -76,19 +77,19 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show person' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     get person_url(@person)
     assert_response :success
   end
 
   test 'should get edit' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     get edit_person_url(@person)
     assert_response :success
   end
 
   test 'should update person' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     patch person_url(@person), params: { person: {
       firstname: 'Timothy',
       middlename: 'Titus'
@@ -99,7 +100,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy person' do
-    post_sign_in_as_user(users(:one))
+    post_sign_in_as_user(@user)
     assert_difference('Person.count', -1) do
       delete person_url(@person)
     end

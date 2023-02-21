@@ -4,8 +4,7 @@ class PeopleController < ApplicationController
 
   # GET /people or /people.json
   def index
-    @people = Person.all
-    # repond with html and json
+    @people = current_user.people
     respond_to do |format|
       format.html
       format.json { render json: @people }
@@ -14,7 +13,10 @@ class PeopleController < ApplicationController
 
   # GET /people/1 or /people/1.json
   def show
-    @person
+    @person || respond_to do |format|
+      format.html { redirect_to people_path, notice: "You don't have access to that Person" }
+      format.json { render json: { error: "You don't have access to that Person" }, status: :unauthorized }
+    end
   end
 
   # GET /people/new
@@ -29,9 +31,8 @@ class PeopleController < ApplicationController
   end
 
   # POST /people or /people.json
-
   def create
-    @person = Person.new(person_params)
+    @person = Person.new(person_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @person.save
@@ -71,7 +72,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
       format.json { head :no_content }
-      # THe page doesn't update automatically... maybe this is where those destroy.turbo_stream.erb files come in?
+      # The page doesn't update automatically... maybe this is where those destroy.turbo_stream.erb files come in?
       format.turbo_stream { flash.now[:notice] = 'Person was successfully deleted.' }
     end
   end
@@ -80,7 +81,7 @@ class PeopleController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_person
-    @person = Person.find(params[:id])
+    @person = Person.where(id: params[:id], user_id: current_user.id).first
   end
 
   # Only allow a list of trusted parameters through.

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class PeopleControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
     @person = people(:one)
   end
 
@@ -12,15 +13,16 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'JSON: should get index' do
-    post_sign_in_as_user_json(users(:one))
+    post_sign_in_as_user_json(@user)
     get people_url, as: :json
+
     assert_response :success
-    assert JSON.parse(response.body).length == Person.count
     assert JSON.parse(response.body).first['id'] == Person.first.id
+    assert JSON.parse(response.body).first['user_id'] == @user.id
   end
 
   test 'JSON: should create person' do
-    post_sign_in_as_user_json(users(:one))
+    post_sign_in_as_user_json(@user)
     assert_difference('Person.count') do
       post people_url, params: {
         person: {
@@ -47,7 +49,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'JSON: should not create person' do
-    post_sign_in_as_user_json(users(:one))
+    post_sign_in_as_user_json(@user)
     assert_no_difference('Person.count') do
       post people_url, params: {
         person: {
@@ -72,14 +74,14 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'JSON: should show person' do
-    post_sign_in_as_user_json(users(:one))
+    post_sign_in_as_user_json(@user)
     get person_url(@person), as: :json
     assert_response :success
     assert JSON.parse(response.body)['id'] == @person.id
   end
 
   test 'JSON: should update person' do
-    post_sign_in_as_user_json(users(:one))
+    post_sign_in_as_user_json(@user)
     patch person_url(@person), params: { person: {
       firstname: 'Timothy',
       middlename: 'Titus'
@@ -90,7 +92,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'JSON: should destroy person' do
-    post_sign_in_as_user_json(users(:one))
+    post_sign_in_as_user_json(@user)
     assert_difference('Person.count', -1) do
       delete person_url(@person), as: :json
     end
