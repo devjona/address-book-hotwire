@@ -31,7 +31,30 @@ class PeopleTest < ApplicationSystemTestCase
     assert_no_text @person.firstname
   end
 
-  # test submitting a person with all data
+  test 'showing a Person, their emails, phones, addresses' do
+    sign_in_as(@user)
+    visit people_url
+    click_on 'Show', match: :first
+
+    assert_text @person.firstname
+    assert_text @person.lastname
+    assert_text @person.ssn
+    assert_text @person.birthdate
+    assert_text @person.comment
+    assert_text @person.salutation
+
+    assert_text @email.address
+    assert_text @email.comment
+
+    assert_text @phone.number
+    assert_text @phone.comment
+
+    assert_text @address.street
+    assert_text @address.town
+    assert_text @address.zip
+    assert_text @address.state
+    assert_text @address.country
+  end
 
   test 'creating a Person' do
     sign_in_as(@user)

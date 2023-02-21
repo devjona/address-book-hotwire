@@ -15,7 +15,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1 or /people/1.json
   def show
-    @person
+    @person if @person.user_id == current_user.id
   end
 
   # GET /people/new
@@ -30,9 +30,8 @@ class PeopleController < ApplicationController
   end
 
   # POST /people or /people.json
-
   def create
-    @person = Person.new(person_params)
+    @person = Person.new(person_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @person.save
