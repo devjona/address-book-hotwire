@@ -19,7 +19,7 @@ one: !!omap
   - salutation: Person.salutations[:mr]
   - user_id: 1
 
-twp: !!omap
+two: !!omap
   - id: 2
   - firstname: Frankie
   - middlename: Eric

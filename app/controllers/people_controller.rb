@@ -4,9 +4,7 @@ class PeopleController < ApplicationController
 
   # GET /people or /people.json
   def index
-    # @people = Person.all
     @people = current_user.people
-    # repond with html and json
     respond_to do |format|
       format.html
       format.json { render json: @people }
@@ -15,7 +13,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1 or /people/1.json
   def show
-    @person if @person.user_id == current_user.id
+    @person
   end
 
   # GET /people/new
@@ -71,7 +69,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
       format.json { head :no_content }
-      # THe page doesn't update automatically... maybe this is where those destroy.turbo_stream.erb files come in?
+      # The page doesn't update automatically... maybe this is where those destroy.turbo_stream.erb files come in?
       format.turbo_stream { flash.now[:notice] = 'Person was successfully deleted.' }
     end
   end
@@ -80,7 +78,7 @@ class PeopleController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_person
-    @person = Person.find(params[:id])
+    @person = Person.where(id: params[:id], user_id: current_user.id).first
   end
 
   # Only allow a list of trusted parameters through.
