@@ -18,4 +18,10 @@ class SessionsController < ApplicationController
     @current_user = nil
     redirect_to login_path, notice: 'Logged out!'
   end
+
+  private
+
+  def session_params
+    params.require(:session).permit(:email, :password)
+  end
 end
