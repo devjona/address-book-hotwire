@@ -14,7 +14,7 @@ one: !!omap
   - middlename: Enrique
   - lastname: Arenas
   - ssn: 1112223333
-  - birthdate: 
+  - birthdate: Sun, 01 Apr 1990
   - comment: Nice guy
   - salutation: Person.salutations[:mr]
   - user_id: 1
@@ -25,7 +25,31 @@ two: !!omap
   - middlename: Eric
   - lastname: Arnoldsky
   - ssn: 111247333
-  - birthdate: 
+  - birthdate: Sun, 01 Apr 1990
   - comment: Nice guy
   - salutation: Person.salutations[:mr]
   - user_id: 2
+
+three: !!omap
+  - id: 3
+  - firstname: Frime
+  - middlename: Ericsh
+  - lastname: Butay
+  - ssn: 111222233
+  - birthdate: 
+  - comment: Nice guy
+  - salutation: Person.salutations[:mr]
+  - user_id: 1
+
+four: !!omap
+  - id: 4
+  - firstname: Dily 
+  - middlename: 
+  - lastname: Sakhf
+  - ssn: 111284948
+  - birthdate: 
+  - comment: Nice guy
+  - salutation: Person.salutations[:mr]
+  - user_id: 1
+
+
