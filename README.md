@@ -4,7 +4,7 @@
 
 You may create a user and add contacts to your address book!
 
-This is an ongoing learning project with [issues that are listed here](https://github.com/devjona/address-book-hotwire/issues/46). 
+This is an ongoing learning project with [issues that are listed here](https://github.com/devjona/address-book-hotwire/issues). 
 
 :heart: Please keep in mind that I'm doing this on my *spare* time and cannot contribute a full-scale production-grade resources to this.
 
