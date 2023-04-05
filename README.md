@@ -1,5 +1,14 @@
 # README
 
+:eye: **The project is live [here](https://address-book-production.onrender.com/login).**
+
+You may create a user and add contacts to your address book!
+
+This is an ongoing learning project with [issues that are listed here](https://github.com/devjona/address-book-hotwire/issues/46). 
+
+:heart: Please keep in mind that I'm doing this on my *spare* time and cannot contribute a full-scale production-grade resources to this.
+
+## Purpose:
 The purpose of this project is to practice Ruby on Rails development with a focus on the following areas:
 1. Database table relationships
     - Front-end and Model validations
