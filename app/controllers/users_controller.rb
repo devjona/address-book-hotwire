@@ -1,22 +1,14 @@
 class UsersController < ApplicationController
-  def new
-    # byebug
-    # @user = User.new
-  end
+  def new; end
 
   def create
-    # byebug
-    @user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password]
-    )
+    @user = User.new(user_params)
     if @user.save
       # This logs the user in after they sign up successfully.
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      render :new
+      render :new, status: :unprocessable_entity, flash: { error: @user.errors.full_messages }
     end
   end
 

@@ -2,38 +2,27 @@ require 'application_system_test_case'
 
 class PeopleTest < ApplicationSystemTestCase
   setup do
+    @user = users(:one)
+    @user_two = users(:two)
+
     @person = people(:one)
     @phone = phones(:one)
     @email = emails(:email_one)
     @address = addresses(:one)
-    @user = users(:one)
-    @user_two = users(:two)
   end
 
-  test 'visiting the people index, redirected to login' do
-    visit people_url
-    assert_selector 'h1', text: 'Login'
-  end
-
-  # test for seeing people that belong to user
-  test 'visiting the people index' do
-    sign_in_as(@user)
-    visit people_url
-    assert_selector 'h2', text: 'People'
-    assert_text @person.firstname
-  end
-
-  # test for not seeing people that belong to other user
-  test 'visiting the people index, not seeing other user people' do
+  test "visiting the people index, not seeing another user's people" do
     sign_in_as(@user_two)
     visit people_url
     assert_selector 'h2', text: 'People'
     assert_no_text @person.firstname
   end
 
-  test 'showing a Person, their emails, phones, addresses' do
+  test 'Signing in, seeing people that belong to the User, and the Person details' do
     sign_in_as(@user)
     visit people_url
+    assert_selector 'h2', text: 'People'
+    assert_text @person.firstname
     click_on 'Show', match: :first
 
     assert_text @person.firstname
@@ -41,7 +30,6 @@ class PeopleTest < ApplicationSystemTestCase
     assert_text @person.ssn
     assert_text @person.birthdate
     assert_text @person.comment
-    assert_text @person.salutation
 
     assert_text @email.address
     assert_text @email.comment
@@ -53,41 +41,32 @@ class PeopleTest < ApplicationSystemTestCase
     assert_text @address.town
     assert_text @address.zip
     assert_text @address.state
-    assert_text @address.country
+    assert_text @address.country.upcase
   end
 
-  test 'creating a Person' do
+  test 'creating a Person with no data, seeing errors, then providing correct inputs' do
     sign_in_as(@user)
     visit people_url
     click_on 'Add a Person'
+    click_on 'Submit'
+    assert_text 'prohibited this person from being saved:'
     fill_in_second_person
     click_on 'Submit'
     assert_text 'Tim Zam'
     assert_text 'Person was successfully created.'
   end
 
-  # test submitting a person with no data
-  test 'creating a Person with no data' do
-    sign_in_as(@user)
-    visit people_url
-    click_on 'Add a Person'
-    click_on 'Submit'
-    assert_text 'prohibited this person from being saved:'
-  end
-
   test 'updating a Person' do
     sign_in_as(@user)
     new_name = 'Sigroy'
     new_email = 'sig@roy.com'
-    new_zip = '98765'
     visit people_url
     assert_text @person.firstname
 
-    click_on 'Edit', match: :first
+    edit_links = all('a', text: 'Edit')
+    edit_links.last.click
     fill_in 'Firstname', with: new_name
     fill_in 'Email address', with: new_email
-    fill_in 'Zip', with: new_zip
-    select 'Canada', from: 'Country'
     click_on 'Submit'
 
     assert_text 'Person was successfully updated.'

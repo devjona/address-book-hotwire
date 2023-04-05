@@ -5,6 +5,6 @@ one: !!omap
   - town: MyString
   - zip: 78787
   - state: TX
-  - country: US
+  - country: USA
   - person_id: 1
 

@@ -6,6 +6,11 @@ class LoginTest < ApplicationSystemTestCase
     @user = users(:one)
   end
 
+  test 'visiting the people index, redirected to login' do
+    visit people_url
+    assert_selector 'h1', text: 'Login'
+  end
+
   test 'visit login page' do
     visit login_url
     assert_selector 'h1', text: 'Login'
