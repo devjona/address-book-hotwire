@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PeopleControllerTest < ActionDispatch::IntegrationTest
+class PeopleControllerTestJSON < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @person = people(:one)
