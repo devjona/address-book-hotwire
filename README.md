@@ -1,5 +1,7 @@
 # README
 
+<img width="568" alt="image" src="https://user-images.githubusercontent.com/7801456/230505330-3be2a0b9-6980-4b38-a720-b814abffebbc.png">
+
 :eye: **The project is live [here](https://address-book-production.onrender.com/login).**
 
 You may create a user and add contacts to your address book!
